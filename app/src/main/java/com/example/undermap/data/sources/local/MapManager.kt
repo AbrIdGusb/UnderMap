@@ -11,11 +11,15 @@ import java.io.File
 
 class MapManager(private val context: Context) {
 
+    private val dbReg: String = "mapData.db"
+    private val dbTwist: String = "mapDataTwisted.db"
+    private val db: String = dbTwist
+
     private fun openDatabase(): SQLiteDatabase {
-        val dbFile = File(context.cacheDir, "mapData.db")
+        val dbFile = File(context.cacheDir, db)
 
         if (!dbFile.exists()) {
-            context.assets.open("subway/mapData.db").use { input ->
+            context.assets.open("subway/$db").use { input ->
                 dbFile.outputStream().use { output ->
                     input.copyTo(output)
                 }

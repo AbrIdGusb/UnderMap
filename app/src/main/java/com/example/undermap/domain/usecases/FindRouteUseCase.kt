@@ -6,9 +6,10 @@ import com.example.undermap.domain.models.Route
 
 class FindRouteUseCase {
 
-    fun findRoute(start: Int, end: Int): Route? {
+    fun findRoute(start: Int, end: Int): Pair<List<Int>, Int>?{
         val graph = GraphCache.graph
-        if (graph.nodes.isEmpty()) return Route(emptyList(), 0)
-        return dijkstra(graph, start, end)
+        if (graph.nodes.isEmpty()) return Pair(listOf(), 0)
+        val r = dijkstra(graph, start, end)
+        return Pair(r!!.nodeIds, r.totalTime)
     }
 }

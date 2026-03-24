@@ -71,6 +71,7 @@ dependencies {
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.test.runner)
     testImplementation(libs.androidx.test.rules)
-
-
+    testImplementation("androidx.test:core:1.5.0")
+    testImplementation("androidx.test:core-ktx:1.5.0")
+    testImplementation("androidx.test.ext:junit:1.3.0")
 }

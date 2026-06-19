@@ -21,7 +21,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.undermap.ui.theme.AppColors
@@ -42,7 +44,8 @@ fun BottomBarView(
                 .widthIn(max = maxPanelWidth)
                 .fillMaxWidth()
                 .height(46.dp)
-                .clip(RoundedCornerShape(7.dp))
+                .clip(RoundedCornerShape(9.dp))
+                .shadow(10.dp, RoundedCornerShape(7.dp))
                 .background(AppColors.current.shallowBackColor)
         ) {
             Row(
@@ -55,7 +58,7 @@ fun BottomBarView(
                     modifier = Modifier
                         .fillMaxHeight()
                         .weight(1f)
-                        .padding(4.dp, 4.dp, 2.dp, 4.dp),
+                        .padding(3.5.dp, 3.5.dp, 2.dp, 3.5.dp),
                     shape = RoundedCornerShape(9.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = AppColors.current.deepBackColor,
@@ -77,7 +80,7 @@ fun BottomBarView(
                     modifier = Modifier
                         .fillMaxHeight()
                         .weight(1f)
-                        .padding(2.dp, 4.dp, 4.dp, 4.dp),
+                        .padding(2.dp, 3.5.dp, 3.5.dp, 3.5.dp),
                     shape = RoundedCornerShape(9.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = AppColors.current.deepBackColor,

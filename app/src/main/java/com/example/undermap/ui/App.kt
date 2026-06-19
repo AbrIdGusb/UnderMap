@@ -19,6 +19,7 @@ import com.example.undermap.ui.models.MapGraphCache
 import com.example.undermap.ui.screens.map.BottomBarView
 import com.example.undermap.ui.screens.map.MetroMapScreen
 import com.example.undermap.ui.screens.map.StationDialog
+import com.example.undermap.ui.screens.map.TopButtonsView
 import com.example.undermap.ui.theme.AppColors
 import com.example.undermap.ui.theme.AppTheme
 
@@ -34,7 +35,8 @@ fun App(context: Context) {
             ) {
                 MetroMapScreen(MapGraphCache.mapGraph)
                 BottomBarView()
-                StationDialog(MapGraphCache.mapGraph.stations.get(20), onDismiss = {})
+                //StationDialog(MapGraphCache.mapGraph.stations.get(20), onDismiss = {})
+                TopButtonsView()
             }
 
             Box(

@@ -12,7 +12,6 @@ class GraphReposImpl: GraphRepos {
 
     override fun getGraph(context: Context): Graph{
         return GraphMapper().mapGraph(MapManager(context).getGraph())
-
     }
 
     override fun getMapGraph(context: Context): MapGraph{

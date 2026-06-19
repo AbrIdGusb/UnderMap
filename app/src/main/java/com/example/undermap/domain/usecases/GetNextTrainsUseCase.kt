@@ -5,7 +5,7 @@ import com.example.undermap.domain.models.GraphCache
 
 class GetNextTrainsUseCase {
 
-    suspend fun setNextTrainTime(id: Int): Pair<Int, Int> {
+    suspend fun getNextTrainTime(id: Int): Pair<Int, Int> {
         val codes = Pair(GraphCache.dataGraph.stationsById[id]!!.codeL, GraphCache.dataGraph.stationsById[id]!!.codeR)
         val repos = NextTrainTimeReposImpl()
         return Pair(repos.getNextTrainTime(codes.first.toInt()), repos.getNextTrainTime(codes.second.toInt()))

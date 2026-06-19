@@ -3,53 +3,53 @@ package com.example.undermap.ui.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-
-private val DarkColorScheme = darkColorScheme(
-    background = ColorDark.BkgColor,
-    surface = ColorDark.ShallowBackColor,
-
-    primary = ColorDark.DeepBackColor,
-    secondary = ColorDark.TextLightColor,
-    tertiary = ColorDark.AccentColor,
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
 
 
-    onBackground = ColorDark.TextLightColor,
-    onSurface = ColorDark.TextColdColor,
+val LocalCustomColors = staticCompositionLocalOf{
+    CustomColors(
+        bkgColor = Color.Unspecified,
 
-    onPrimary = ColorDark.TextWarmColor,
-    onSecondary = ColorDark.TextDarkColor,
-    onTertiary = ColorDark.TextLightColor,
-)
+        textDarkColor = Color.Unspecified,
+        textLightColor = Color.Unspecified,
+        textColdColor = Color.Unspecified,
+        textWarmColor = Color.Unspecified,
 
-private val LightColorScheme = lightColorScheme(
-    background = ColorLight.BkgColor,
-    surface = ColorLight.ShallowBackColor,
+        deepBackColor = Color.Unspecified,
+        shallowBackColor = Color.Unspecified,
 
-    primary = ColorLight.DeepBackColor,
-    secondary = ColorLight.TextDarkColor,
-    tertiary = ColorLight.AccentColor,
+        accentColor = Color.Unspecified,
 
+        navigationBarColor = Color.Unspecified,
 
-    onBackground = ColorLight.TextDarkColor,
-    onSurface = ColorLight.TextColdColor,
+        iconColor = Color.Unspecified,
+    )
+}
 
-    onPrimary = ColorLight.TextWarmColor,
-    onSecondary = ColorLight.TextLightColor,
-    onTertiary = ColorLight.TextDarkColor
-)
 
 @Composable
 fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    val customColors = if (darkTheme) ColorDark else ColorLight
 
-    val colors = if (darkTheme) DarkColorScheme else LightColorScheme
+    CompositionLocalProvider(LocalCustomColors provides customColors) {
 
-    MaterialTheme(
-        colorScheme = colors,
-        typography = Typography,
-        content = content
-    )
+        val colors = if (darkTheme) darkColorScheme() else lightColorScheme()
+
+        MaterialTheme(
+            colorScheme = colors,
+            typography = Typography,
+            content = content
+        )
+    }
+}
+
+object AppColors {
+    val current: CustomColors
+        @Composable
+        get() = LocalCustomColors.current
 }

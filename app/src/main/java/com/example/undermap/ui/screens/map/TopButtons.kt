@@ -34,7 +34,7 @@ fun TopButtonsView() {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.Top
     ) {
-        // Левая круглая кнопка (radius 16dp = 32dp diameter)
+        // Левая круглая кнопка (radius 16dp = 32dp diameter )
         IconButton(
             onClick = { /*TODO*/ },
             modifier = Modifier
